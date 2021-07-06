@@ -2,13 +2,21 @@ from selenium import webdriver
 import time
 
 try:
-    link = "http://suninjuly.github.io/registration1.html"
+    link = "http://suninjuly.github.io/registration2.html"
     browser = webdriver.Chrome()
     browser.get(link)
-    elements = browser.find_elements_by_css_selector("div.first_block input")
-    for el in elements:
-        el.send_keys("Люблю Вику")
-        time.sleep(1)
+
+    # Вводим имя
+    element_first = browser.find_element_by_css_selector("div.first_block > div.first_class > input")
+    element_first.send_keys('First name')
+
+    # Вводим фамилию
+    element_second = browser.find_element_by_css_selector("div.first_block > div.second_class > input")
+    element_second.send_keys('Second name')
+
+    # Вводим емаил
+    element_email = browser.find_element_by_css_selector("div.first_block > div.third_class > input")
+    element_email.send_keys('Email')
 
     # Отправляем заполненную форму
     button = browser.find_element_by_css_selector("button.btn")
